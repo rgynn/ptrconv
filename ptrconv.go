@@ -7,8 +7,89 @@ import (
 	"time"
 )
 
+// Int8Ptr simply converts int8 to *int8
+func Int8Ptr(input int8) *int8 {
+	return &input
+}
+
+// Int8PtrString returns the string value of *int8 or nil
+func Int8PtrString(input *int8) string {
+	if input == nil {
+		return "nil"
+	}
+	return fmt.Sprintf("%d", *input)
+}
+
+// Int8PtrFromString simply converts a string to to *int8
+func Int8PtrFromString(input string) (*int8, error) {
+	result, err := strconv.ParseInt(input, 10, 8)
+	if err != nil {
+		return nil, err
+	}
+	result8 := int8(result)
+	return &result8, nil
+}
+
+// Int8PtrNilOrEmpty returns true if nil or empty int8
+func Int8PtrNilOrEmpty(input *int8) bool {
+	return input == nil || input != nil && *input == 0
+}
+
+// Int16Ptr simply converts int16 to *int16
+func Int16Ptr(input int64) *int64 {
+	return &input
+}
+
+// Int16PtrString returns the string value of *int16 or nil
+func Int16PtrString(input *int16) string {
+	if input == nil {
+		return "nil"
+	}
+	return fmt.Sprintf("%d", *input)
+}
+
+// Int16PtrFromString simply converts a string to to *int16
+func Int16PtrFromString(input string) (*int16, error) {
+	result, err := strconv.ParseInt(input, 10, 16)
+	if err != nil {
+		return nil, err
+	}
+	result16 := int16(result)
+	return &result16, nil
+}
+
+// Int16PtrNilOrEmpty returns true if nil or empty int16
+func Int16PtrNilOrEmpty(input *int16) bool {
+	return input == nil || input != nil && *input == 0
+}
+
 // Int32Ptr simply converts int32 to *int32
-func Int32Ptr(i int32) *int32 { return &i }
+func Int32Ptr(input int32) *int32 {
+	return &input
+}
+
+// Int32PtrString returns the string value of *int32 or nil
+func Int32PtrString(input *int32) string {
+	if input == nil {
+		return "nil"
+	}
+	return fmt.Sprintf("%d", *input)
+}
+
+// Int32PtrFromString simply converts a string to to *int32
+func Int32PtrFromString(input string) (*int32, error) {
+	result, err := strconv.ParseInt(input, 10, 32)
+	if err != nil {
+		return nil, err
+	}
+	result32 := int32(result)
+	return &result32, nil
+}
+
+// Int32PtrNilOrEmpty returns true if nil or empty int32
+func Int32PtrNilOrEmpty(input *int32) bool {
+	return input == nil || input != nil && *input == 0
+}
 
 // BoolPtr simply converts bool to *bool
 func BoolPtr(input bool) *bool {
