@@ -140,6 +140,28 @@ func Int64PtrNilOrEmpty(input *int64) bool {
 	return input == nil || input != nil && *input == 0
 }
 
+// DurationPtr simply converts time.Duration to *time.Duration
+func DurationPtr(input time.Duration) *time.Duration {
+	return &input
+}
+
+// DurationPtrFromString simply converts a string to to *time.Duration
+func DurationPtrFromString(input string) (*time.Duration, error) {
+	result, err := time.ParseDuration(input)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+// DurationPtrString returns the string value of *time.Duration or nil
+func DurationPtrString(input *time.Duration) string {
+	if input == nil {
+		return "nil"
+	}
+	return input.String()
+}
+
 // TimePtr simply converts time.Time to *time.Time
 func TimePtr(input time.Time) *time.Time {
 	return &input
