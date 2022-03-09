@@ -7,6 +7,33 @@ import (
 	"time"
 )
 
+// IntPtr simply converts int to *int
+func IntPtr(input int) *int {
+	return &input
+}
+
+// IntPtrString returns the string value of *int or nil
+func IntPtrString(input *int) string {
+	if input == nil {
+		return "nil"
+	}
+	return fmt.Sprintf("%d", *input)
+}
+
+// IntPtrFromString simply converts a string to to *int
+func IntPtrFromString(input string) (*int, error) {
+	result, err := strconv.Atoi(input)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+// IntPtrNilOrEmpty returns true if nil or empty int
+func IntPtrNilOrEmpty(input *int) bool {
+	return input == nil || input != nil && *input == 0
+}
+
 // Int8Ptr simply converts int8 to *int8
 func Int8Ptr(input int8) *int8 {
 	return &input
